@@ -1,17 +1,19 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
 
 @Component({
-    selector: "Home",
-    moduleId: module.id,
-    templateUrl: "./home.component.html"
+  selector: "Home",
+  moduleId: module.id,
+  templateUrl: "./home.component.html",
+  styleUrls: [ "./home.component.scss" ]
 })
 export class HomeComponent implements OnInit {
 
-    constructor() {
-        // Use the component constructor to inject providers.
-    }
+  constructor(
+    @Inject('platform') public platform
+  ) { }
 
-    ngOnInit(): void {
-        // Init your component properties here.
-    }
+  ngOnInit(): void {
+    // Init your component properties here.
+  }
+
 }

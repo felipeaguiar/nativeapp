@@ -1,7 +1,24 @@
-<ActionBar class="action-bar">
-    <Label class="action-bar-title" text="Home"></Label>
+<ActionBar [class.action-bar]="platform.isAndroid">
+    <Label
+        class="action-bar-title"
+        text="NativeApp"
+        android:horizontalAlignment="left">
+    </Label>
+
+    <ng-container *ngIf="platform.isAndroid">
+        <ActionItem android.systemIcon="ic_menu_search_mtrl_alpha"></ActionItem>
+        <ActionItem text="New Group" android.position="popup"></ActionItem>
+        <ActionItem text="New broadcast" android.position="popup"></ActionItem>
+        <ActionItem text="NativeApp Web" android.position="popup"></ActionItem>
+        <ActionItem text="Starred messages" android.position="popup"></ActionItem>
+        <ActionItem text="Settings" android.position="popup"></ActionItem>
+    </ng-container>
+
+    <ng-container *ngIf="platform.isIOS">
+        <ActionItem ios.systemIcon="2" ios.position="left"></ActionItem>
+        <ActionItem ios.systemIcon="7" ios.position="right"></ActionItem>
+    </ng-container>
 </ActionBar>
 
-<GridLayout class="page">
-    <!-- Add your page content here -->
-</GridLayout>
+<AppTabs>
+</AppTabs>
