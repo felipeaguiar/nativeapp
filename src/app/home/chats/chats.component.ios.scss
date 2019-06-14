@@ -1,0 +1,13 @@
+@import '~nativescript-theme-core/scss/forest';
+@import 'chats.common';
+
+.unread {
+  font-size: 10;
+  border-radius: 50%;
+  background-color: $blue;
+}
+
+.time {
+  color: $grey-dark;
+  font-size: 12;
+}

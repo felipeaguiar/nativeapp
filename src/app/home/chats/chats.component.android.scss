@@ -1,0 +1,19 @@
+@import '~nativescript-theme-core/scss/forest';
+@import '../../../app-variables';
+
+@import 'chats.common';
+
+.unread {
+  font-size: 11;
+  padding-top: 2;
+  border-radius: 50%;
+  background-color: $lightgreen;
+}
+
+.time {
+  &-unread {
+    color: $lightgreen;
+  }
+  color: $grey-dark;
+  font-size: 12;
+}
