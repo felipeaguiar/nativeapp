@@ -1,6 +1,6 @@
-<ListView [items]="chats" class="list-group">
+<ListView [items]="chats" class="list-group" (itemTap)="onItemTap($event)">
   <ng-template let-chat="item" let-i="index">
-    <GridLayout rows="auto, auto" columns="auto, *, auto" class="list-group-item">
+    <GridLayout  rows="auto, auto" columns="auto, *, auto" class="list-group-item">
       <Image row="0" col="0" rowSpan="2" [src]="chat.contact.avatar" class="thumb img-circle" ></Image>
 
       <Label row="0" col="1" [text]="chat.contact.name"></Label>
@@ -12,9 +12,9 @@
         [class.time-unread]="chat.unread > 0">
       </Label>
 
-      <StackLayout row="1" col="2" orientation="horizontal" class="m-x-auto">
-        <Label *ngIf="chat.muted" [text]="'M'" class="mdi muted"></Label>
-        <Label *ngIf="chat.unread > 0" [text]="1" class="body unread"></Label>
+      <StackLayout row="1" col="2" orientation="horizontal" style="height: 20;" class="m-x-auto">
+        <Label *ngIf="chat.muted" text="&#xe04f;" class="mdi muted"></Label>
+        <Label *ngIf="chat.unread > 0" [text]="chat.unread" class="body unread"></Label>
       </StackLayout>
     </GridLayout>
   </ng-template>

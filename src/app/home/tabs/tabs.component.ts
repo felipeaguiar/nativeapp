@@ -1,4 +1,6 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import * as application from 'tns-core-modules/application';
+import * as platform from 'tns-core-modules/platform';
 
 @Component({
   selector: 'AppTabs',
@@ -11,14 +13,24 @@ export class TabsComponent implements OnInit {
   selectedIndex: number;
 
   constructor(
-    @Inject('platform') public platform
+    private changeDetectorRef: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    if (this.platform.isAndroid) {
-      this.selectedIndex = 1;
-    } else {
-      this.selectedIndex = 3;
+    this.selectedIndex = platform.isAndroid ? 1 : 3
+
+    if (platform.isAndroid) {
+      application.android.on(
+        application.AndroidApplication.activityBackPressedEvent,
+        (args) => {
+          if (this.selectedIndex !== 1) {
+            this.selectedIndex = 1;
+            (args as any).cancel = true;
+
+            this.changeDetectorRef.detectChanges();
+          }
+        }
+      )
     }
   }
 

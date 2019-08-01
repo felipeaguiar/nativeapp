@@ -1,6 +1,6 @@
 <TabView [(ngModel)]="selectedIndex" iosIconRenderingMode="automatic">
   <StackLayout *tabItem="{title: 'Status', iconSource: 'res://tabs/status'}">
-    <Label text="Tab status Felipe" textWrap="true"></Label>
+    <Label text="Tab status" textWrap="true"></Label>
   </StackLayout>
 
   <ng-template tabItem title="Calls" [iconSource]="selectedIndex === 1 ? 'res://tabs/calls_filled' : 'res://tabs/calls'">
